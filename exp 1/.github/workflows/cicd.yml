@@ -2,9 +2,9 @@ name: CI/CD React App
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 permissions:
   contents: write  
@@ -34,12 +34,15 @@ jobs:
       # Configure Git identity
       - name: Configure Git
         run: |
-          git config --global user.name "Thanmai-1029"
-          git config --global user.email "thanmaivoruganti57@gmail.com"
+          git config --global user.name "balajee-rm"
+          git config --global user.email "balajee.rm@gmail.com"
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git remote set-url origin https://github.com/Thanmai-1029/cloud.git
+          git config --global user.name "balajee-rm"
+          git config --global user.email "balajee.rm@gmail.com"
+          npm install -g gh-pages
+          gh-pages -d dist -r https://x-access-token:${GITHUB_TOKEN}@github.com/balajee-rm/S109.git
